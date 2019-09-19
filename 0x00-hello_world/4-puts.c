@@ -1,6 +1,11 @@
 #include <stdio.h>
 
-/* main function that puts text */
+/**
+ * main - main function that puts string
+(* Description: function prints the string given.
+(* section header: stdio.h
+ * Return: returns 0
+*/
 int main(void)
 {
 puts("\"Programming is like building a multilingual puzzle");
