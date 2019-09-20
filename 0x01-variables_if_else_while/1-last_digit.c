@@ -5,10 +5,10 @@
 /**
  * main - generates random num to check
 (* a blank line
-* Description: Longer description of the function)?
+ * Description: Longer description of the function)?
 (* section header: Section description)*
-* Return: Description of the returned value
-*/
+ * Return: Description of the returned value
+ */
 int main(void)
 {
 int n;
