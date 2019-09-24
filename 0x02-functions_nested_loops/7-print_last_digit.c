@@ -10,9 +10,9 @@
 int print_last_digit(int c)
 {
 int mask = c >> (sizeof(int) * 8 - 1);
-c = ((c + mask) ^ mask);
+unsigned int h = (c + mask) ^ mask;
 
-_putchar((c % 10) + '0');
+_putchar((h % 10) + '0');
 
-return (c % 10);
+return (h % 10);
 }
