@@ -4,7 +4,7 @@
  * print_last_digit - Entry point
  * @c: value of character
  * Description: return value of last digit)?
- * Return:  value of last digit
+ * Return: value of last digit
  */
 
 int print_last_digit(int c)
