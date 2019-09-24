@@ -3,6 +3,7 @@
  * _abs - Entry point
  * @c: value of character
  * Description: return absolute value)?
+ * Return: absolute value of c
  */
 
 int _abs(int c)
