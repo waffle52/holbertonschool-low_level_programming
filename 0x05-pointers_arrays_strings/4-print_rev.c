@@ -18,6 +18,13 @@ void print_rev(char *s)
 	_putchar('\n');
 }
 
+/**
+ * _strlen - Entry point
+ * @s: value of character
+ * Description: return length of string)?
+ * Return: length
+ */
+
 int _strlen(char *s)
 {
 	int i = 0;
