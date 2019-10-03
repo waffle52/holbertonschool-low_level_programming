@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h> /* delete l8er */
 
 /**
  * *_strcat - Entry point
@@ -10,18 +11,19 @@
 
 char *_strcat(char *dest, char *src)
 {
-	while (*dest)
-		dest++;
+	int i, j;
 
-	while (*src)
+	for (i = 0; dest[i] != '\0'; ++i)
 	{
-		*dest = *src;
-		src++;
-		dest++;
+
 	}
 
-	*dest = '\0';
+	for (j = 0; src[j] != '\0'; ++j, ++i)
+	{
+		dest[i] = src[j];
+	}
 
+		dest[i] = '\0';
 
 	return (dest);
 }
