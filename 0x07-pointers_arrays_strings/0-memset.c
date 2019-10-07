@@ -8,7 +8,6 @@
  * Description: fills memory and shares location)?
  * Return: pointer to memory area s
  */
-
 char *_memset(char *s, char b, unsigned int n)
 {
 	unsigned int i;
@@ -18,7 +17,6 @@ char *_memset(char *s, char b, unsigned int n)
 		s[i] = b;
 
 	}
-	s[i] = '\0';
 
 	return (s);
 }
