@@ -1,5 +1,6 @@
 #include "holberton.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * main - Entry point
@@ -18,7 +19,8 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		int num = (*argv[1] - '0') * (*argv[2] - '0');
+	int num = atoi(argv[1]) * atoi(argv[2]);
+
 	printf("%i\n", num);
 	}
 
