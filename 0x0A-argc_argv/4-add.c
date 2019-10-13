@@ -1,7 +1,8 @@
-#include "ctype.h"
+#include <ctype.h>
 #include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * main - Entry point
@@ -20,7 +21,7 @@ int main(int argc, char *argv[])
 	{
 		for (i = 1; i < argc; i++)
 		{
-			if (isdigit(*argv[i]))
+			if (fulldigits(argv[i]) == 0)
 			{
 				num += atoi(argv[i]);
 			}
@@ -35,6 +36,31 @@ int main(int argc, char *argv[])
 	else
 	{
 		printf("0\n");
+	}
+
+	return (0);
+}
+
+/**
+ * fulldigits - Entry point
+ * @s: string of char
+ * Description: checks string for only numbers)?
+ * Return: 0 (SUCCESS)
+ */
+
+int fulldigits(char *s)
+{
+/* return 0 if full of digits, return 1 if not */
+
+
+	unsigned int j;
+
+	for (j = 0; j < strlen(s); j++)
+	{
+		if (!isdigit(s[j]))
+		{
+			return (1);
+		}
 	}
 
 	return (0);
