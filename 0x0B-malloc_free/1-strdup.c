@@ -30,16 +30,14 @@ char *_strdup(char *str)
 
 	str2 = malloc(sizeof(char) * n + 1);
 
-
-	if (!str2)
+	if (str2)
 	{
 		return (NULL);
 	}
 
-
 	for (i = 0; i < n; i++)
 	{
-			str2[i] = str[i];
+		str2[i] = str[i];
 	}
 
 
