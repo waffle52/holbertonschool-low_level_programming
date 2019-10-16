@@ -10,9 +10,9 @@
 
 char *_strdup(char *str)
 {
-	if (str == NULL)
+	if (str == '\0')
 	{
-		return (NULL);
+		return ('\0');
 	}
 	else
 	{
@@ -30,9 +30,9 @@ char *_strdup(char *str)
 
 	str2 = malloc(sizeof(char) * n + 1);
 
-	if (str2)
+	if (str2 == '\0')
 	{
-		return (NULL);
+		return ('\0');
 	}
 
 	for (i = 0; i < n; i++)
