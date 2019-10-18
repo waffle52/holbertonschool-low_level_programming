@@ -20,16 +20,16 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	}
 
-	str = malloc(size * nmemb);
+	str = malloc(size * (nmemb + 1));
 
 	if (str == NULL)
 	{
 		return (NULL);
 	}
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < nmemb; i++)
 	{
-		str[i] = '0';
+		str[i] = 0;
 	}
 
 	str[i + 1] = '\0';
