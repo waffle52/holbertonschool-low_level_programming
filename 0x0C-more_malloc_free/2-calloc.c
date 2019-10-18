@@ -20,7 +20,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	}
 
-	str = malloc(size * (nmemb + 1));
+	str = malloc(size * nmemb);
 
 	if (str == NULL)
 	{
@@ -32,6 +32,6 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		str[i] = 0;
 	}
 
-	str[i + 1] = '\0';
+
 	return (str);
 }
