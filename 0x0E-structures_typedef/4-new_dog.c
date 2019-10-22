@@ -2,11 +2,12 @@
 #include <stdlib.h>
 
 /**
- * *str_concat - Entry point
- * @s1: pointer of char
- * @s2: pointer of char
- * Description: concatenates two strings)?
- * Return: new string memory
+ * *new_dog - Entry point
+ * @name: pointer of char
+ * @age: float
+ * @owner: pointer of char
+ * Description: copies data)?
+ * Return: memory dog of type dog_t
  */
 
 dog_t *new_dog(char *name, float age, char *owner)
