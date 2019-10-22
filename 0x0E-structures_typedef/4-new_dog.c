@@ -1,4 +1,5 @@
 #include "dog.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -10,11 +11,8 @@ int _strlen(char *str)
 {
 	int i;
 
-	while (*str)
-	{
-		i++;
-		str++;
-	}
+	for (i = 0; str[i]; i++)
+		;
 
 	return (i);
 }
@@ -28,68 +26,59 @@ int _strlen(char *str)
  */
 char *_strcpy(char *dest, char *src)
 {
-	int a, c;
+	int i;
 
-	a = 0;
+	for (i = 0; src[i]; i++)
+		dest[i] = src[i];
+	dest[i] = '\0';
 
-	while (src[a] != '\0')
-	{
-		a++;
-	}
-	for (c = 0; c <= a; c++)
-	{
-		dest[c] = src[c];
-	}
-	dest[c] = '\0';
 	return (dest);
 }
 
 /**
- * *new_dog - Entry point
- * @name: pointer of char
- * @age: float
- * @owner: pointer of char
- * Description: copies data)?
- * Return: memory of type dog_t
+ * new_dog - Program that creates a new dog. That is, creates a new struct
+ * @name: Stores the name char array
+ * @age: Stores the age float
+ * @owner: Stores the owner char array
+ * Return: Pointer to the newly created struct
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *newDog;
-
-	int nl;
-	int ol;
+	char *newName, *newOwner;
+	int nameLen;
+	int ownerLen;
 
 	if (name == NULL || owner == NULL)
-	{
 		return (NULL);
-	}
 
 	newDog = malloc(sizeof(dog_t));
+
 	if (newDog == NULL)
 		return (NULL);
 
-	nl = _strlen(name);
-	newDog->name = malloc(sizeof(char *) * (nl + 1));
-	if (newDog->name == NULL)
+	nameLen = _strlen(name);
+	newName = malloc(sizeof(char *) * (nameLen + 1));
+
+	if (newName == NULL)
 	{
-		free(newDog->name);
+		free(newDog);
 		return (NULL);
 	}
 
-	ol = _strlen(owner);
-	newDog->owner = malloc(sizeof(char *) * (ol + 1));
-	if (newDog->owner == NULL)
+	ownerLen = _strlen(owner);
+	newOwner = malloc(sizeof(char *) * (ownerLen + 1));
+
+	if (newOwner == NULL)
 	{
-		free(newDog->name);
-		free(newDog->owner);
+		free(newName);
+		free(newDog);
 		return (NULL);
 	}
 
-	newDog->name = name;
-
+	newDog->name = _strcpy(newName, name);
 	newDog->age = age;
-
-	newDog->owner = owner;
+	newDog->owner = _strcpy(newOwner, owner);
 
 	return (newDog);
 }
