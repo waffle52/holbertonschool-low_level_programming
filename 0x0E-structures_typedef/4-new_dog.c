@@ -43,7 +43,7 @@ int _strlen(char *str)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *newDog = NULL;
+	dog_t *newDog;
 	char *newName;
 	char *newOwner;
 	int nameLen;
@@ -70,6 +70,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (newOwner == NULL)
 	{
 		free(newName);
+		free(newOwner);
 		free(newDog);
 		return (NULL);
 	}
