@@ -21,9 +21,25 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 
+	if(name == NULL)
+	{
+	        name = "";
+	}
+	else
+	{
 	dog->name = name;
+	}
+
 	dog->age = age;
+
+	if(owner == NULL)
+	{
+	        owner = "";
+	}
+	else
+	{
 	dog->owner = owner;
+	}
 
 	return (dog);
 }
