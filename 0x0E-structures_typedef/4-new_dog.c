@@ -10,11 +10,18 @@
  */
 char *_strcpy(char *dest, char *src)
 {
-	int i;
+	int a, c;
 
-	for (i = 0; src[i]; i++)
-		dest[i] = src[i];
+	a = 0;
 
+	while (src[a] != '\0')
+	{
+		a++;
+	}
+	for (c = 0; c <= a; c++)
+	{
+		dest[c] = src[c];
+	}
 	return (dest);
 }
 
@@ -27,8 +34,11 @@ int _strlen(char *str)
 {
 	int i;
 
-	for (i = 0; str[i]; i++)
-		;
+	while (*str)
+	{
+		i++;
+		str++;
+	}
 
 	return (i);
 }
@@ -70,7 +80,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (newOwner == NULL)
 	{
 		free(newName);
-		free(newOwner);
 		free(newDog);
 		return (NULL);
 	}
