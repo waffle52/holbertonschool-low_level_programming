@@ -2,6 +2,24 @@
 #include <stdlib.h>
 
 /**
+ * _strlen - Gets the length of the input string
+ * @str: String input
+ * Return: Number of indexes in a string
+ */
+int _strlen(char *str)
+{
+	int i;
+
+	while (*str)
+	{
+		i++;
+		str++;
+	}
+
+	return (i);
+}
+
+/**
  * _strcpy - Copies a string from src to dest
  * @dest: String to be copied to
  * @src: String to be copied from
@@ -23,24 +41,6 @@ char *_strcpy(char *dest, char *src)
 		dest[c] = src[c];
 	}
 	return (dest);
-}
-
-/**
- * _strlen - Gets the length of the input string
- * @str: String input
- * Return: Number of indexes in a string
- */
-int _strlen(char *str)
-{
-	int i;
-
-	while (*str)
-	{
-		i++;
-		str++;
-	}
-
-	return (i);
 }
 
 /**
