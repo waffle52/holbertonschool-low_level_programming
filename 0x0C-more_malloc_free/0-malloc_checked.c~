@@ -1,0 +1,25 @@
+#include "holberton.h"
+#include <stdlib.h>
+
+/**
+ * *str_concat - Entry point
+ * @s1: pointer of char
+ * @s2: pointer of char
+ * Description: concatenates two strings)?
+ * Return: new string memory
+ */
+
+void *malloc_checked(unsigned int b)
+{
+
+	char *str2;
+
+	str2 = malloc(b);
+
+	if (str2 == NULL)
+	{
+		exit (98);
+	}
+
+	return (str2);
+}
