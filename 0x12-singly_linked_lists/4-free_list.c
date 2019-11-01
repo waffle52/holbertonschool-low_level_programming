@@ -3,21 +3,21 @@
 
 
 /**
- * add_node_end - Entry Point
+ * free_list - Entry Point
  * @head: address of head node
- * @str: string to be copied
- * Description: creates a new node at the end of the list)?
- * Return: the new node
+ * Description: loops through each nodes and free the allocated memory)?
  */
 
 void free_list(list_t *head)
 {
 
 	list_t *tmp;
+
 	while (head != NULL)
 	{
-		tmp = head;
-		head = head->next;
-		free (tmp);
+		tmp = head->next;
+		free(head->str);
+		free(head);
+		head = tmp;
 	}
 }
