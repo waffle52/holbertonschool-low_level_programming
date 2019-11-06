@@ -26,19 +26,19 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 			tmp = *head;
 			*head = tmp->next;
 			free(tmp);
-			return (-1);
+			return (1);
 		}
-		else if (i == index - 1)
+		else if (i == index)
 		{
 			tmp = *head;
 			*head = tmp->next;
 			free(tmp);
-			return (-1);
+			return (1);
 		}
 
 		new = new->next;
 	}
 
 
-	return (1);
+	return (-1);
 }
