@@ -21,6 +21,7 @@ int pop_listint(listint_t **head)
 	if (temp != NULL)
 	{
 		holder = temp->next;
+		num = temp->n;
 		free(temp);
 		*head = holder;
 	}
