@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * reverse_nodeint_at_index - Entry Point
+ * reverse_listint - Entry Point
  * @head: address of head node
  * Description: reverses a list and returns head of new list)?
  * Return: pointer to first node of reversed list
