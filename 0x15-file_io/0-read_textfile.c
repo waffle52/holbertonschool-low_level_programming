@@ -16,8 +16,7 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd;
-	int printed_num;
+	ssize_t fd, read_num, written, cl;
 	char *buf;
 
 	if (filename == NULL)
@@ -25,7 +24,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	buf = malloc(sizeof(char) * letters + 1);
+	buf = malloc(sizeof(char) * letters);
 
 	if (buf == NULL)
 	{
@@ -41,10 +40,20 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	printed_num = read(fd, buf, letters + '\0');
-	write(STDOUT_FILENO, buf, letters + '\0');
-	free(buf);
-	close(fd);
+	read_num = read(fd, buf, letters);
 
-	return (printed_num);
+	if (read_num == -1)
+		return (0);
+
+	written = write(STDOUT_FILENO, buf, read_num);
+
+	if (written == -1)
+		return (0);
+
+	cl = close(fd);
+	if (cl == -1)
+		return (0);
+
+	free(buf);
+	return (read_num);
 }
