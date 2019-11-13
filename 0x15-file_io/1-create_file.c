@@ -18,13 +18,13 @@
 int create_file(const char *filename, char *text_content)
 {
 	int fd, read_num, written, cl;
-	int length = 0 + strlen(text_content);
+	int length = 0;
 	char *buf;
 
 	if (filename == NULL)
-	{
 		return (-1);
-	}
+	if (text_content != NULL)
+		length = strlen(text_content);
 	buf = malloc(sizeof(char) * length);
 	if (buf == NULL)
 	{
