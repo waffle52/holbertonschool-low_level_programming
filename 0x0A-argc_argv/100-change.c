@@ -47,26 +47,31 @@ int check(int cents)
 	if (cents >= 25)
 	{
 		cents -= 25;
+		printf("25:%i\n", cents);
 		return (cents);
 	}
 	else if (cents >= 10)
 	{
 		cents -= 10;
+		printf("10:%i\n", cents);
 		return (cents);
 	}
 	else if (cents >= 5)
 	{
 		cents -= 5;
+		printf("5:%i\n", cents);
 		return (cents);
 	}
 	else if (cents >= 2)
 	{
 		cents -= 2;
+		printf("2:%i\n", cents);
 		return (cents);
 	}
-	else if (cents >= 1)
+	else
 	{
 		cents -= 1;
+		printf("1:%i\n", cents);
 		return (cents);
 	}
 
