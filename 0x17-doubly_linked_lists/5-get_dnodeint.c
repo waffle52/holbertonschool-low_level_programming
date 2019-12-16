@@ -19,9 +19,10 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 		counter++;
 		if (counter == index)
 		{
-			break;
+			return(node);
 		}
 	}
+	node = NULL;
 
 	return (node);
 }
