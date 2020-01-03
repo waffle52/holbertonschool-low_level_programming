@@ -8,11 +8,12 @@ int main(int argc, char *argv[])
 {
 	int line_num = 0;
 	int fd;
+	/* char *buf; word */
 
 	/* start of the line */
 	if (argc != 2)
 	{
-		printf("USAGE: monty file");
+		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	(void)line_num;
@@ -21,7 +22,7 @@ int main(int argc, char *argv[])
 
 	if (fd == -1)
 	{
-		printf("Error: Can't open file %s", argv[0]);
+		printf("Error: Can't open file %s\n", argv[0]);
 		return (EXIT_FAILURE);
 	}
 
