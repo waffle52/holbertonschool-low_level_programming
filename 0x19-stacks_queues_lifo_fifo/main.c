@@ -1,20 +1,18 @@
 #include "monty.h"
 
-/*#define MAXCHAR 1000*/
+#define MAXCHAR 1000
 /**
  *
  */
-
+/* extern head of list */
 
 int main(int argc, char *argv[])
 {
 	int line_num = 0;
 	int fd;
-	/* ssize_t cl, buf, read_num; */
-	/*FILE *fp;
+	FILE *fp;
 	char *filename;
-	char str[MAXCHAR];*/
-	/* char *buf; word */
+	char str[MAXCHAR];
 
 	/* start of the line */
 	if (argc != 2)
@@ -32,7 +30,7 @@ int main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 
-	/*filename = argv[1];
+	filename = argv[1];
 
         fp = fopen(filename, "r");
 	if (fp == NULL){
@@ -40,76 +38,14 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	while (fgets(str, MAXCHAR, fp) != NULL)
-		printf("%s", str);
-		fclose(fp);*/
+	{
+		line_num += 1;
+	        line_check(str, line_num);
+	}
+	fclose(fp);
 
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -4,10 +4,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <ctype.h>
 
 
 /**
@@ -40,7 +42,14 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void (*get_func(char *s))(stack_t **stack, unsigned int line_number);
-
+void (*get_func(char *s))(stack_t, unsigned int);
+void line_check(char *str, int line_num);
+void pint(char **position, const int elements);
+void push(char **position, const int elements);
+void pall(char **position, const int elements);
+void pop(char **position, const int elements);
+void swap(char **position, const int elements);
+void add(char **position, const int elements);
+void nop(char **position, const int elements);
 
 #endif
