@@ -11,7 +11,6 @@
 #include <fcntl.h>
 #include <ctype.h>
 
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -43,9 +42,9 @@ typedef struct instruction_s
 } instruction_t;
 
 void (*get_func(char *s, stack_t **head, unsigned int element));
-void line_check(char *str, int line_num);
+void line_check(char *str, int line_num, stack_t **head);
 void pint(stack_t **position, unsigned int elements);
-void push(stack_t **position, unsigned int elements);
+void push(stack_t **head, unsigned int elements);
 void pall(stack_t **position, unsigned int elements);
 void pop(stack_t **position, unsigned int elements);
 void swap(stack_t **position, unsigned int elements);

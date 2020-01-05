@@ -7,33 +7,36 @@
  *Return: the new added element.
  */
 
-void push(stack_t **position, unsigned int element)
+void push(stack_t **head, unsigned int element)
 {
-	/*char *new;
+	stack_t *new;
 
-	if (element == NULL || element == "")
+	/*if (isdigit(element) == 0)
 	{
-		prinf("L<line_number>: usage: push integer");
+		printf("L<%i>: usage: push integer\n", num_line);
 		exit(EXIT_FAILURE);
-	}
-	new = malloc(sizeof(char));
+		}*/
+	new = (stack_t *) malloc(sizeof(stack_t));
+
 	if (new == NULL)
-		return (NULL);
-	new->element = element;
-	new->prev = NULL;
-	if (*position == NULL)
 	{
-		*position = new;
-		return (*position);
+		free(new);
+		exit(0);
 	}
-	new->next = *position;
-	(*position)->prev = new;
-	*position = new;
-	return (*position);*/
-	(void)element;
-	(void)position;
-	printf("hi\n");
+
+	new->n = element;
+	new->next = (*head);
+	new->prev = NULL;
+	if ((*head) != NULL)
+	{
+		(*head)->prev = new;
+	}
+
+	(*head) = new;
+       
 }
+
+
 /**
  *pop - prints all the values on the stack.
  *@list: is the stack to be printed

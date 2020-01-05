@@ -32,13 +32,11 @@ void (*get_func(char *s, stack_t **head, unsigned int element))
 	return (NULL);
 }
 
-void line_check(char *str, int line_num)
+void line_check(char *str, int line_num, stack_t **head)
 {
 	char *keyword;
 	int num = 1;
 	int j = 0;
-	stack_t **head = NULL; /* test list */
-	/*void (*point)(stack_t, unsigned int);*/
 	(void)line_num;
 
 	keyword = strtok(str, " ");

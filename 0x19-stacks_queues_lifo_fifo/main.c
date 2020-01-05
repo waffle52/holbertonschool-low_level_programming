@@ -4,7 +4,7 @@
 /**
  *
  */
-/* extern head of list */
+/*extern int num_line = 0;*/
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 	int fd;
 	FILE *fp;
 	char *filename;
+	stack_t **head = NULL;
 	char str[MAXCHAR];
 
 	/* start of the line */
@@ -40,9 +41,14 @@ int main(int argc, char *argv[])
 	while (fgets(str, MAXCHAR, fp) != NULL)
 	{
 		line_num += 1;
-	        line_check(str, line_num);
+	        line_check(str, line_num, head);
 	}
 	fclose(fp);
+	/*while(head != NULL)
+	{
+		free(head);
+		head = head->next;
+		}*/
 
 	return (0);
 }
