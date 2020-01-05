@@ -3,7 +3,7 @@
  *
  */
 
-void pint(char **position, int element)
+void pint(stack_t **position, unsigned int element)
 {
 	/*char *new;
 
@@ -28,6 +28,6 @@ void pint(char **position, int element)
 	*head = new;
 
 	return (new);*/
-	(void)element;
 	(void)position;
+	(void)element;
 }

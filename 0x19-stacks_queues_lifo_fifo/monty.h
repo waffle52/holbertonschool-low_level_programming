@@ -42,14 +42,14 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void (*get_func(char *s))(stack_t, unsigned int);
+void (*get_func(char *s, stack_t **head, unsigned int element));
 void line_check(char *str, int line_num);
-void pint(char **position, const int elements);
-void push(char **position, const int elements);
-void pall(char **position, const int elements);
-void pop(char **position, const int elements);
-void swap(char **position, const int elements);
-void add(char **position, const int elements);
-void nop(char **position, const int elements);
+void pint(stack_t **position, unsigned int elements);
+void push(stack_t **position, unsigned int elements);
+void pall(stack_t **position, unsigned int elements);
+void pop(stack_t **position, unsigned int elements);
+void swap(stack_t **position, unsigned int elements);
+void add(stack_t **position, unsigned int elements);
+void nop(stack_t **position, unsigned int elements);
 
 #endif

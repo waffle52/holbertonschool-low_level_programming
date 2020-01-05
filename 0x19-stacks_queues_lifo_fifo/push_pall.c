@@ -7,7 +7,7 @@
  *Return: the new added element.
  */
 
-void push(char **position, int element)
+void push(stack_t **position, unsigned int element)
 {
 	/*char *new;
 
@@ -32,13 +32,14 @@ void push(char **position, int element)
 	return (*position);*/
 	(void)element;
 	(void)position;
+	printf("hi\n");
 }
 /**
  *pop - prints all the values on the stack.
  *@list: is the stack to be printed
  *Return: the elements of the stack.
  */
-void pall(char **position, int element)
+void pall(stack_t **position, unsigned int element)
 {
 	/*unsigned int elements = 0;
 	const  int stack = list;

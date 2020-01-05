@@ -4,7 +4,7 @@
  *
  */
 
-void (*get_func(char *s))(stack_t, unsigned int)
+void (*get_func(char *s, stack_t **head, unsigned int element))
 {
 	instruction_t ops[] = {
 		{"push", push},
@@ -14,17 +14,17 @@ void (*get_func(char *s))(stack_t, unsigned int)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
-		{NULL, NULL}
+		{'\0', NULL}
 	};
 	int i = 0;
 
-	  /*if (!stack)
-	return (NULL);*/
+	/*if (!stack)
+	  return (NULL);*/
 	while (ops[i].opcode != NULL)
 	{
-		if (*s == *(ops[i]).opcode)
+		if (strcmp(s, ops[i].opcode) == 0)
 		{
-			return (ops[i].f);
+		        ops[i].f(head, element);
 		}
 		i++;
 	}
@@ -35,10 +35,10 @@ void (*get_func(char *s))(stack_t, unsigned int)
 void line_check(char *str, int line_num)
 {
 	char *keyword;
-	void (*point)(stack_t, unsigned int);
-	int num = 0;
+	int num = 1;
 	int j = 0;
-	stack_t head; /* test list */
+	stack_t **head = NULL; /* test list */
+	/*void (*point)(stack_t, unsigned int);*/
 	(void)line_num;
 
 	keyword = strtok(str, " ");
@@ -47,9 +47,6 @@ void line_check(char *str, int line_num)
 	{
 		num = str[j] - '0';
 	}
-	point = get_func(keyword);
+	get_func(keyword, head, num);
 
-        point(head, 1);
-
-	(void)num;
 }
