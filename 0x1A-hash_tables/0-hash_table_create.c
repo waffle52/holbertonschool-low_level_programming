@@ -21,7 +21,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 		return (NULL);
 	}
 
-	table->array = malloc(size * sizeof(hash_node_t));
+	table->array = malloc(sizeof(char *) * size);
 	if (table->array == NULL)
 	{
 		printf("Table array is NULL\n");
