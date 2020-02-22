@@ -12,6 +12,7 @@ oclean:
 	rm -f $(RM)
 fclean:
 	rm -f *~ $(NAME)
+	rm -f $(NAME)
 	rm -f $(RM)
 re:
 	rm -f $(RM)
