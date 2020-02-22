@@ -6,15 +6,19 @@ RM = rm -f
 
 all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
+.PHONY: clean
 clean:
 	$(RM) *~ $(NAME)
 	$(RM) $(NAME)
+.PHONY: oclean
 oclean:
 	$(RM) $(OBJ)
+.PHONY: fclean
 fclean:
 	$(RM) *~ $(NAME)
 	$(RM) $(NAME)
 	$(RM) $(OBJ)
+.PHONY: re
 re:
 	$(RM) $(OBJ)
 	$(CC) -c -o main.o main.c
