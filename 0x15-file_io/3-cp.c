@@ -5,6 +5,7 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
+
 #include <fcntl.h>
 
 /**
@@ -43,7 +44,7 @@ int main(int argc, char **argv)
 
 	cl2 = close(files[1]);
 	if (cl2 == -1)
-		report(buf, 100, NULL, cl2);
+		report(buf, 100, NULL, files[1]);
 
 	return (0);
 
