@@ -19,73 +19,56 @@
 int main(int argc, char **argv)
 {
 	char buf[1024];
-	int files[2];
+	int fd, fd2;
 	int cl;
 	ssize_t count;
 
 	if (argc != 3)
-		report(buf, 97, NULL, 0);
+		err_quit("Usage: cp file_from file_to", NULL, 97);
 
-	files[0] = open(argv[1], O_RDONLY); /* file from */
-	if (files[0] < 0)
-		report(buf, 98, argv[1], 0);
+	fd = open(argv[1], O_RDONLY); /* file from */
+	if (fd < 0)
+		err_quit("Error: Can't read from file", argv[1], 98);
 
-	files[1] = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY, 0664); /* file to */
-	if (files[1] < 0)
-		report(buf, 99, argv[2], 0);
+	fd2 = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY, 0664); /* file to */
+	if (fd2 < 0)
+		err_quit("Error: Can't write to", argv[2], 99);
 
-	while ((count = read(files[0], buf, sizeof(buf))) != 0)
-		if (write(files[1], buf, count) == -1)
-			report(buf, 99, argv[2], 0);
+	while ((count = read(fd, buf, sizeof(buf))) != 0)
+	{
+		if (count < 0)
+			err_quit("Error: Can't read from file", argv[2], 98);
 
-	cl = close(files[0]);
+		if (write(fd2, buf, count) < 0)
+			err_quit("Error: Can't write to", argv[2], 99);
+	}
+
+	cl = close(fd);
 	if (cl < 0)
-		report(buf, 100, NULL, files[0]);
+	{
+		dprintf(2, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
 
-	cl = close(files[1]);
+	cl = close(fd2);
 	if (cl < 0)
-		report(buf, 100, NULL, files[1]);
+	{
+		dprintf(2, "Error: Can't close fd %d\n", fd2);
+		exit(100);
+	}
 
 	return (0);
-
 }
 
 /**
- * report - print error and quit
- * @buf: buf to free
- * @code: exit code to use
- * @message: file name to be used when read or write fails
- * @fd: fd value to be used when a file descriptor cannot be closed
- * Description: gets error code and message to print before exit)?
+ * err_quit - print error message and exit
+ * @message: error message to print
+ * @context: file name to be used with error message
+ * @status: status code to use when exiting
+ * Description: Prints error message and exists with status passed
  */
-
-void report(char *buf, int code, char *message, int fd)
+void err_quit(char *message, char *context, int status)
 {
-	if (code == 97)
-	{
-		dprintf(2, "Usage: cp file_from file_to\n");
-		free(buf);
-		exit(97);
-	}
-
-	else if (code == 98)
-	{
-		dprintf(2, "Error: Can't read from file %s\n", message);
-		free(buf);
-		exit(98);
-	}
-
-	else if (code == 99)
-	{
-		dprintf(2, "Error: Can't write to %s\n", message);
-		free(buf);
-		exit(99);
-	}
-
-	if (code == 100)
-	{
-		dprintf(2, "Error: Can't close fd %i", fd);
-		free(buf);
-		exit(100);
-	}
+	dprintf(2, "%s %s", message, context);
+	exit(status);
 }
