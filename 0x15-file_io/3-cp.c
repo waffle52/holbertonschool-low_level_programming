@@ -70,7 +70,7 @@ int main(int argc, char **argv)
 void err_quit(char *message, char *context, int status)
 {
 	if (context != NULL && strcmp(context, "") != 0)
-		dprintf(2, "%s%s\n", message, context);
+		dprintf(2, "%s %s\n", message, context);
 	else
 		dprintf(2, "%s\n", message);
 	exit(status);
