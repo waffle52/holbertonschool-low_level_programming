@@ -20,18 +20,18 @@ int main(int argc, char **argv)
 {
 	char buf[1024];
 	int files[2];
-	int cl, cl2;
+	int cl;
 	ssize_t count;
 
 	if (argc != 3)
 		report(buf, 97, NULL, 0);
 
 	files[0] = open(argv[1], O_RDONLY); /* file from */
-	if (files[0] == -1)
+	if (files[0] < 0)
 		report(buf, 98, argv[1], 0);
 
 	files[1] = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY, 0664); /* file to */
-	if (files[1] == -1)
+	if (files[1] < 0)
 		report(buf, 99, argv[2], 0);
 
 	while ((count = read(files[0], buf, sizeof(buf))) != 0)
@@ -40,11 +40,11 @@ int main(int argc, char **argv)
 
 	cl = close(files[0]);
 	if (cl < 0)
-		report(buf, 100, NULL, cl);
+		report(buf, 100, NULL, files[0]);
 
-	cl2 = close(files[1]);
-	if (cl2 < 0)
-		report(buf, 100, NULL, cl2);
+	cl = close(files[1]);
+	if (cl < 0)
+		report(buf, 100, NULL, files[1]);
 
 	return (0);
 
