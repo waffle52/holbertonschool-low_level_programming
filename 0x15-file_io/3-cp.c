@@ -69,6 +69,9 @@ int main(int argc, char **argv)
  */
 void err_quit(char *message, char *context, int status)
 {
-	dprintf(2, "%s %s", message, context);
+	if (context != NULL && context != "")
+		dprintf(2, "%s %s", message, context);
+	else
+		dprintf(2, "%s", message);
 	exit(status);
 }
