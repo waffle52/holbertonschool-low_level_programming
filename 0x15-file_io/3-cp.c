@@ -24,7 +24,10 @@ int main(int argc, char **argv)
 	ssize_t count;
 
 	if (argc != 3)
-		err_quit("Usage: cp file_from file_to", NULL, 97);
+	{
+		dprintf(2, "Usage: cp file_from file_to");
+		exit(97);
+	}
 
 	fd = open(argv[1], O_RDONLY); /* file from */
 	if (fd < 0)
@@ -42,21 +45,18 @@ int main(int argc, char **argv)
 		if (write(fd2, buf, count) < 0)
 			err_quit("Error: Can't write to", argv[2], 99);
 	}
-
 	cl = close(fd);
 	if (cl < 0)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
-
 	cl = close(fd2);
 	if (cl < 0)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", fd2);
 		exit(100);
 	}
-
 	return (0);
 }
 
