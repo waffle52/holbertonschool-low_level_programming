@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	char buf[1024];
 	int fd, fd2;
 	int cl;
-	ssize_t count;
+	ssize_t count, written;
 
 	if (argc != 3)
 	{
@@ -31,19 +31,19 @@ int main(int argc, char **argv)
 
 	fd = open(argv[1], O_RDONLY); /* file from */
 	if (fd < 0)
-		err_quit("Error: Can't read from file", argv[1], 98);
+		err_quit("Error: Can't read from file ", argv[1], 98);
 
 	fd2 = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY, 0664); /* file to */
 	if (fd2 < 0)
-		err_quit("Error: Can't write to", argv[2], 99);
+		err_quit("Error: Can't write to ", argv[2], 99);
 
 	while ((count = read(fd, buf, sizeof(buf))) != 0)
 	{
 		if (count < 0)
-			err_quit("Error: Can't read from file", argv[1], 98);
-
-		if (write(fd2, buf, count) < 0)
-			err_quit("Error: Can't write to", argv[2], 99);
+			err_quit("Error: Can't read from file ", argv[1], 98);
+		written = write(fd2, buf, count);
+		if (written < 0)
+			err_quit("Error: Can't write to ", argv[2], 99);
 	}
 	cl = close(fd);
 	if (cl < 0)
@@ -69,9 +69,6 @@ int main(int argc, char **argv)
  */
 void err_quit(char *message, char *context, int status)
 {
-	if (context != NULL && strcmp(context, "") != 0)
-		dprintf(2, "%s %s\n", message, context);
-	else
-		dprintf(2, "%s\n", message);
+	dprintf(STDERR_FILENO, "%s%s\n", message, context);
 	exit(status);
 }
