@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		dprintf(2, "Usage: cp file_from file_to");
+		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 
@@ -70,8 +70,8 @@ int main(int argc, char **argv)
 void err_quit(char *message, char *context, int status)
 {
 	if (context != NULL && strcmp(context, "") != 0)
-		dprintf(2, "%s %s", message, context);
+		dprintf(2, "%s %s\n", message, context);
 	else
-		dprintf(2, "%s", message);
+		dprintf(2, "%s\n", message);
 	exit(status);
 }
