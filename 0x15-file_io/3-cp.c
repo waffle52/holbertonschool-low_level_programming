@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 	while ((count = read(fd, buf, sizeof(buf))) != 0)
 	{
 		if (count < 0)
-			err_quit("Error: Can't read from file", argv[2], 98);
+			err_quit("Error: Can't read from file", argv[1], 98);
 
 		if (write(fd2, buf, count) < 0)
 			err_quit("Error: Can't write to", argv[2], 99);
