@@ -39,12 +39,12 @@ int main(int argc, char **argv)
 			report(buf, 99, argv[2], 0);
 
 	cl = close(files[0]);
-	if (cl == -1)
+	if (cl < 0)
 		report(buf, 100, NULL, cl);
 
 	cl2 = close(files[1]);
-	if (cl2 == -1)
-		report(buf, 100, NULL, files[1]);
+	if (cl2 < 0)
+		report(buf, 100, NULL, cl2);
 
 	return (0);
 
