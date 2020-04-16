@@ -20,27 +20,34 @@ int binary_search(int *array, size_t size, int value)
 	if (array == NULL)
 		return (-1);
 
-	print_list(array, size, 0);
+	/*print_list(array, size, 0);*/
 
-	while (left < right)
+	while (left <= right)
 	{
 		m = ((left + right) / 2);
+		print_list(array, right + 1, left);
 		if (array[m] < value)
 		{
 			left = m + 1;
-		        print_list(array, size, left);
 		}
 		else if (array[m] > value)
 		{
 			right = m - 1;
-			print_list(array, size, right);
 		}
-		else
-			return m;
+		else if (array[m] == value)
+			return (m);
 	}
 
 	return (-1);
 }
+
+/**
+ * print_list - Entry Point
+ * @array: pointer to element in array
+ * @size: number of elements to print up to inarray
+ * @start: start index to loop through array
+ * Description: Prints array using commads if not last element)?
+ */
 
 void print_list(int *array, size_t size, size_t start)
 {
