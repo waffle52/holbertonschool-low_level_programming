@@ -12,9 +12,14 @@ unsigned int binary_to_uint(const char *b)
 {
 	int total = 0;
 
+	if (b == NULL)
+		return (0);
+
 	while (*b)
 	{
 		total *= 2;
+		if (*b != '1' && *b != '0')
+			return (0);
 		if (*b++ == '1')
 			total += 1;
 	}
